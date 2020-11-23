@@ -1,7 +1,0 @@
-node_modules/
-.DS_Store
-thumb.db
-lib/
-build/
-/*.js
-/*.js.map
