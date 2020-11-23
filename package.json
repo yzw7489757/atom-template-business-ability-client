@@ -19,24 +19,20 @@
   "scripts": {
     "start": "webpack-dev-server --config .script/webpack.dev.js --hot --inline --progress",
     "https": "HTTPS=true npm start",
-    "build:umd": "webpack --config .script/webpack.umd.js --hide-modules --progress --colors",
-    "build:umd-main": "webpack --config .script/webpack.main.umd.js --hide-modules --progress --colors",
-    "build:umdAnalyzer": "HTTPS=true webpack --config .script/webpack.main.umd.js --hide-modules",
+    "build:umd-pro": "webpack --config .script/webpack.pro.umd.js --hide-modules --progress --colors",
+    "build:umdAnalyzer": "HTTPS=true webpack --config .script/webpack.pro.umd.js --hide-modules",
     "build:typings": "tsc -p tsconfig.d.json",
-    "build": "rm -rf lib && tnpm i && npm run test && npm run build:umd && npm run build:umd-main",
+    "build": "rm -rf lib && tnpm i && npm run test && npm run build:umd && npm run build:umd-pro",
     "lint": "eslint --quiet --ext .tsx,.ts,.js,.jsx src"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "<%=gitRepo%>"
   },
   "author": "",
   "license": "ISC",
   "publishConfig": {
     "registry": "http://registry.npm.alibaba-inc.com"
-  },
-  "peerDependencies": {
-    "@ali/tracker": "^4.0.1"
   },
   "dependencies": {
     "antd": "^4.8.4",
