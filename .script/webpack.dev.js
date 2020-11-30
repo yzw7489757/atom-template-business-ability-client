@@ -1,8 +1,7 @@
 const { resolve } = require('path')
 const TerserPlugin = require('terser-webpack-plugin');
 const {name} = require('../package.json');
-const WebpackBar = require('webpackbar')
-const { baseConfig, envInjector } = require('./webpack.base');
+const baseConfig = require('./webpack.base');
 const {library} = require('./library');
 const externals = require('./externals');
 
@@ -43,14 +42,6 @@ module.exports = [{
   entry: {
     index: resolve(__dirname, '../src/index.tsx'),
   },
-  
-  plugins: [
-    ...devBaseConfig.plugins,
-    envInjector('development'),
-    new WebpackBar({
-      name
-    })
-  ],
   
   output: {
     library,

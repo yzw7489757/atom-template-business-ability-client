@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -14,7 +13,7 @@ const { name, version } = require('../package.json')
 const umdConfig = {
   ...base,
 
-  mode: process.env.BUILD_ENV ? 'production' : 'none',
+  mode: 'production',
 
   devtool: 'none',
 }

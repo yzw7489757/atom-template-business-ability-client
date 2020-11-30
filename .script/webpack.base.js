@@ -3,13 +3,15 @@ const { resolve } = require('path');
 
 const { name, version } = require('../package.json')
 const { library } = require('./library');
-// const Dotenv = require('dotenv-webpack');
+const WebpackBar = require('webpackbar')
 const getClientEnvironment = require('./envs/index')
-// style files regexes
 const nonCssModuleRegex = /\.(less|css)$/;
 const cssModuleRegex = /\.module\.(less|css)$/;
 
-// const modeConfig = env => resolve(__dirname, `./envs/.${env}.env`)
+function envInjector (mode) {
+  const env = getClientEnvironment('/', mode)
+  return new webpack.DefinePlugin(env.stringified)
+}
 
 const getStyleLoader = enableCssModule => {
   const moduleOption = enableCssModule ? {
@@ -113,21 +115,11 @@ const base = {
 
   plugins: [
     new webpack.BannerPlugin({banner: `${name}@${version}`}),
+    envInjector(process.env.NODE_ENV || 'development'),
+    new WebpackBar({
+      name
+    })
   ],
 }
 
-module.exports = {
-  baseConfig: base,
-  envInjector: (mode) => {
-    const env = getClientEnvironment('/', mode)
-    return new webpack.DefinePlugin(env.stringified)
-    // new Dotenv({
-    //   path: modeConfig(env), // load this now instead of the ones in '.env'
-    //   safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
-    //   allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
-    //   systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
-    //   silent: true, // hide any errors
-    //   defaults: false // load '.env.defaults' as the default values if empty.
-    // })
-  }
-};
+module.exports = base
