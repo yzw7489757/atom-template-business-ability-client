@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "target": "esnext",
-    "module": "umd",
+    "module": "exNext",
     "jsx": "react",
     "removeComments": false,
     "declaration": true,
