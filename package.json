@@ -19,15 +19,14 @@
   "scripts": {
     "start": "webpack-dev-server --config .script/webpack.dev.js --hot --inline --progress",
     "https": "HTTPS=true npm start",
-    "build:umd-pro": "webpack --config .script/webpack.pro.umd.js --hide-modules --progress --colors",
+    "build:umd-pro": "NODE_ENV=production webpack --config .script/webpack.pro.umd.js --hide-modules --progress --colors",
     "build:umdAnalyzer": "HTTPS=true webpack --config .script/webpack.pro.umd.js --hide-modules",
     "build:typings": "tsc -p tsconfig.d.json",
-    "build": "rm -rf lib && tnpm i && npm run test && npm run build:umd && npm run build:umd-pro",
+    "build": "rm -rf lib && tnpm i && npm run test && npm run build:typings && npm run build:umd-pro",
     "lint": "eslint --quiet --ext .tsx,.ts,.js,.jsx src"
   },
   "repository": {
-    "type": "git",
-    "url": "<%=gitRepo%>"
+    "type": "git"
   },
   "author": "",
   "license": "ISC",
