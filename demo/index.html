@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <!-- <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href=""
+    /> -->
+    <title>Demo</title>
+    <body>
+      <div id="root">
+      </div>
+    </body>
   </head>
-  <body>
-    <div id="root"></div>
-    <script src="./index.js"></script>
-  </body>
+  <script src="//polyfill.alicdn.com/s/polyfill.min.js?features=default,es2017,es6,fetch,RegeneratorRuntime"></script>
+  <script src="//g.alicdn.com/code/lib/require.js/2.3.6/require.js"></script>
+
+  <script>
+    if (!window.require) alert("Mid need require environment");
+    window.require.config({
+        paths: {
+          react:
+            "//g.alicdn.com/code/lib/react/16.8.6/umd/react.production.min",
+          "react-dom":
+            "//g.alicdn.com/code/lib/react-dom/16.8.6/umd/react-dom.production.min",
+          "react-router-dom":
+            "//g.alicdn.com/code/lib/react-router-dom/5.0.1/react-router-dom",
+          moment: "//g.alicdn.com/code/lib/moment.js/2.24.0/moment.min",
+          lodash: "//g.alicdn.com/code/lib/lodash.js/4.17.15/lodash.min",
+          classnames: "//g.alicdn.com/code/lib/classnames/2.2.6/index.min",
+          "prop-types":
+            "//g.alicdn.com/code/lib/prop-types/15.7.2/prop-types.min",
+          // antd: "//g.alicdn.com/code/lib/antd/3.23.6/antd.min",
+          moment:
+            "//g.alicdn.com/code/lib/moment.js/2.24.0/moment-with-locales.min",
+          "moment-timezone":
+            "//g.alicdn.com/code/lib/moment-timezone/0.5.26/moment-timezone-with-data.min",
+          "react-intl":
+            "//g.alicdn.com/mid/package/react-intl/3.4.0/react-intl.min",
+          index: "/index",
+        }
+      });
+  </script>
+  <script>
+    requirejs.onError = function (err) {
+        if (err.requireType === 'timeout') {
+            console.log('modules: ' + err.requireModules);
+        }
+        throw err;
+    };
+    window.onerror = function(err) {
+      alert("加载失败，请重试: " + err);
+    };
+    require(["index"]);
+  </script>
+  <body></body>
 </html>
