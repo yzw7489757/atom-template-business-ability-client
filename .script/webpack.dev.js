@@ -15,7 +15,7 @@ const devBaseConfig = {
     historyApiFallback: true,
     contentBase: resolve(__dirname, '../demo'),
     https: IN_HTTPS,
-    port: 7103,
+    port: 7104,
     host: '0.0.0.0',
     stats: 'minimal',
     headers: {
